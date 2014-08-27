@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <title></title>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+      <div class="container">
+        <div class="navbar-header">
+			<button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+			  <span class="sr-only">Toggle navigation</span>
+			</button> 
+			<a href="/" class="navbar-brand">trag</a></div>
+			<div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+			  <ul class="nav navbar-nav">
+				<li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+				  <a ng-href="{{item.link}}">{{item.title}}</a>
+				</li>
+			  </ul>
+			  <form class="navbar-form navbar-right" role="search" name="user_form" novalidate="">
+			  <div>
+				  <div class="form-group" ng-class="{'has-error has-feedback': user_form.username.$invalid && user_form.username.$dirty}" >
+					<label for="email_field">email</label>
+					  <input id="email_field" type="email" class="form-control" name="username" ng-model="user.username" required="" /> 
+					 <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+					  <!--<span ng-show="user_form.username.$error.required">Tell us your email.</span>-->
+					   
+					  <!--<span ng-show="user_form.username.$error.email">This is not a valid email.</span>-->
+				  </div>
+				  <div class="form-group" ng-class="{'has-error has-feedback': user_form.password.$invalid && user_form.password.$dirty}">
+				  <label for="password_field">password</label>
+					<input id="password_field" type="password" class="form-control" name="password" ng-model="user.password" required="" />
+					<span class="glyphicon glyphicon-remove form-control-feedback"></span>
+				  </div>
+				  <button ng-click="signin(user)" class="btn btn-default">Sign In</button> 
+				  <button ng-click="signup(user)" class="btn btn-default">Sign Up</button>
+			<div class="alert alert-danger" ng-show="(user_form.username.$invalid && user_form.username.$dirty)||(user_form.password.$invalid && user_form.password.$dirty)">
+                <ul>
+                    <li ng-show="user_form.username.$error.required">email address is required</li>
+					<li ng-show="user_form.username.$error.email">email address is not valid</li>
+					<li ng-show="user_form.password.$error.required">password is required</li>
+                </ul>
+            </div>
+			<div class="alert" ng-class="{'alert-danger': message.status=='ko', 'alert-success': message.status=='ok'}" ng-show="(message)">
+               {{message.text}}
+            </div>
+				  </div>
+				  	
+				</form>
+				
+
+    
+			</div>
+      </div>
+	  
+    </div>
+
+  </body>
+</html>
